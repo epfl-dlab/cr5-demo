@@ -54,9 +54,10 @@ export LEVEL_DB_DIR=/path/to/leveldb/files
 export SEARCH_INDEXES_DIR=/path/to/search_indexes/files
 ```
 
-#### [Optional] Set API Port and Rate Limit
+#### [Optional] Set API Host, Port and, Rate Limit
 
 ```bash
+export APP_HOST=some_other_ip
 export APP_PORT=some_other_port_number
 export RATE_LIMIT=some_other_rate_limit_policy
 ```

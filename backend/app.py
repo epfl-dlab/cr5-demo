@@ -204,5 +204,6 @@ def search_similar_documents(model_name, src_lang, dst_lang):
 if __name__ == "__main__":
     app.run(
         debug=True,
+        host=APP_HOST,
         port=int(APP_PORT),
     )

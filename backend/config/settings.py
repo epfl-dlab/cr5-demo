@@ -4,6 +4,7 @@ from cr5.model import Cr5Model
 LEVEL_DB_DIR = os.getenv('LEVEL_DB_DIR', '/opt/Cr5-demo/data/leveldb')
 SEARCH_INDEXES_DIR = os.getenv('SEARCH_INDEXES_DIR', '/opt/Cr5-demo/data/search_indexes')
 
+APP_HOST = os.getenv('APP_HOST', 'localhost')
 APP_PORT = os.getenv('APP_PORT', 5005)
 RATE_LIMIT = os.getenv('RATE_LIMIT', '2 per second')
 
