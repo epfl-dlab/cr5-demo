@@ -4,9 +4,12 @@ export interface Project {
     description: string;
     sourceCode?: string;
     paperLink?: string;
+    libraryLink?: string;
+    demoProjectLink?: string;
     apiDocs?: string;
-    credits?: string[];
 }
+
+export const HOST = process.env.REACT_APP_HOST_URL || 'http://localhost:5005';
 
 export const project: Project = {
     name: 'Crosslingual Document Embedding as Reduced-Rank Ridge Regression',
@@ -24,6 +27,7 @@ export const project: Project = {
         `,
     sourceCode: 'https://github.com/epfl-dlab/Cr5',
     paperLink: 'https://arxiv.org/abs/1904.03922',
+    libraryLink: 'https://github.com/epfl-dlab/cr5-lib',
+    demoProjectLink: 'https://github.com/epfl-dlab/cr5-demo',
+    apiDocs: new URL('apidocs', HOST).toString(),
 };
-
-export const HOST = process.env.REACT_APP_HOST_URL || 'http://localhost:5005';

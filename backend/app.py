@@ -26,14 +26,6 @@ CORS(app=app)
 @limiter.limit(RATE_LIMIT)
 @cross_origin()
 def get_document_embedding(model_name, lang_code):
-    """
-    Get the document embedding of a specific language with Cr5 model.
-    :param model_name: Name of the Cr5 model.
-    :param lang_code: The language of the document in the query.
-    :return:
-        A list of embedding values representing the current document. The size will be 300.
-        If exception or error is raised, the response will be 400 Bad Request.
-    """
     if model_name not in MODELS.keys():
         return make_response(
             ModelNotSupportedError(
@@ -83,15 +75,6 @@ def get_document_embedding(model_name, lang_code):
 @limiter.limit(RATE_LIMIT)
 @cross_origin()
 def compare_documents(model_name, src_lang, dst_lang):
-    """
-    Compare the similarity of documents across different languages.
-    :param model_name: Name of the Cr5 model.
-    :param src_lang: The language of the document #1 in the query.
-    :param dst_lang: The language of the document #2 in the query.
-    :return:
-        A JSON object with field `score` representing the cosine similarity between two documents.
-        If exception or error is raised, the response will be 400 Bad Request.
-    """
     if model_name not in MODELS.keys():
         return make_response(
             ModelNotSupportedError(
@@ -160,18 +143,6 @@ def compare_documents(model_name, src_lang, dst_lang):
 @limiter.limit(RATE_LIMIT)
 @cross_origin()
 def search_similar_documents(model_name, src_lang, dst_lang):
-    """
-    Search the top documents in Wikipedia that are closest to the given document.
-    :param model_name: Name of the Cr5 model.
-    :param src_lang: The language of the document in the query.
-    :param dst_lang: The language of the target search space.
-    :return:
-        A JSON object.
-        `articles`: a list of top documents in Wikipedia that are most similar to the given document.
-        Each document is represented by the page id and the title.
-        `size`: the size of search space.
-        If exception or error is raised, the response will be 400 Bad Request.
-    """
     if model_name not in MODELS.keys():
         return make_response(
             ModelNotSupportedError(

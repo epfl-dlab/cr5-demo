@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
 
             {project.sourceCode && (
                 <p>
-                    Source code:{' '}
+                    Source code for the paper:{' '}
                     <a
                         href={project.sourceCode}
                         target="_blank"
@@ -43,21 +43,38 @@ export const Header: React.FC = () => {
                 </p>
             )}
 
-            {project.apiDocs && project.credits && (
+            {project.libraryLink && (
+                <p>
+                    Try the library here:{' '}
+                    <a
+                        href={project.libraryLink}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {project.libraryLink}
+                    </a>
+                </p>
+            )}
+
+            {project.demoProjectLink && (
+                <p>
+                    Source code for the demo:{' '}
+                    <a
+                        href={project.demoProjectLink}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {project.demoProjectLink}
+                    </a>
+                </p>
+            )}
+
+            {project.apiDocs && (
                 <p>
                     API docs:{' '}
                     <a href={project.apiDocs} target="_blank" rel="noreferrer">
                         {project.apiDocs}
-                    </a>{' '}
-                    <br />
-                    <i
-                        style={{
-                            fontSize: 'small',
-                        }}
-                    >
-                        Credits:{' '}
-                        <a href={project.credits[0]}>{project.credits[1]}</a>
-                    </i>
+                    </a>
                 </p>
             )}
         </Jumbotron>
