@@ -26,4 +26,4 @@ export const project: Project = {
     paperLink: 'https://arxiv.org/abs/1904.03922',
 };
 
-export const HOST = 'http://localhost:5005';
+export const HOST = process.env.REACT_APP_HOST_URL || 'http://localhost:5005';
