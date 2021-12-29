@@ -25,14 +25,18 @@ yarn install
 
 #### Run the Project Locally
 
+By default, the frontend uses the backend at: ```http://localhost:5005```.
+
+To override the setting, use environment variable ```REACT_APP_HOST_URL```.
+
 ```bash
-yarn start
+REACT_APP_HOST_URL=some_different_host yarn start
 ```
 
 #### Deploy the Project
 
 ```bash
-yarn build
+REACT_APP_HOST_URL=some_different_host yarn build
 ```
 
 ## Backend
