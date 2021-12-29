@@ -97,7 +97,10 @@ export const DemoContainer: React.FC = () => {
 
     const compareDocuments = () => {
         const request = { srcText: documentFirst, dstText: documentSecond };
-        const url = `${HOST}/compare/${compareModel}/${languageFirst}/${languageSecond}`;
+        const url = new URL(
+            `compare/${compareModel}/${languageFirst}/${languageSecond}`,
+            HOST
+        ).toString();
 
         setCompareLoading(true);
         axios
@@ -147,7 +150,10 @@ export const DemoContainer: React.FC = () => {
 
     const searchSimilar = () => {
         const request = { text: documentText };
-        const url = `${HOST}/search/${searchModel}/${documentLanguage}/${targetLanguage}`;
+        const url = new URL(
+            `search/${searchModel}/${documentLanguage}/${targetLanguage}`,
+            HOST
+        ).toString();
 
         setSearchLoading(true);
         axios
