@@ -19,44 +19,8 @@ import { CompareDocumentQuery } from '../Query/CompareDocumentQuery';
 import { SearchDocumentQuery } from '../Query/SearchDocumentQuery';
 import { TabHeader } from '../TabHeader/TabHeader';
 import { CompareDocumentModelSelector } from '../Query/CompareDocumentModelSelector';
-import { HOST } from '../../constants';
-
-const JOINT_4_LANGUAGES: Language[] = [
-    { name: 'English', code: 'en' },
-    { name: 'Danish', code: 'da' },
-    { name: 'Italian', code: 'it' },
-    { name: 'Vietnamese', code: 'vi' },
-];
-const JOINT_28_LANGUAGES: Language[] = [
-    { name: 'English', code: 'en' },
-    { name: 'Bulgarian', code: 'bg' },
-    { name: 'Catalan', code: 'ca' },
-    { name: 'Czech', code: 'cs' },
-    { name: 'Danish', code: 'da' },
-    { name: 'German', code: 'de' },
-    { name: 'Greek', code: 'el' },
-    { name: 'Spanish', code: 'es' },
-    { name: 'Estonian', code: 'et' },
-    { name: 'Finnish', code: 'fi' },
-    { name: 'French', code: 'fr' },
-    { name: 'Croatian', code: 'hr' },
-    { name: 'Hungarian', code: 'hu' },
-    { name: 'Indonesian', code: 'id' },
-    { name: 'Italian', code: 'it' },
-    { name: 'Macedonian', code: 'mk' },
-    { name: 'Dutch', code: 'nl' },
-    { name: 'Norwegian', code: 'no' },
-    { name: 'Polish', code: 'pl' },
-    { name: 'Portuguese', code: 'pt' },
-    { name: 'Romanian', code: 'ro' },
-    { name: 'Russian', code: 'ru' },
-    { name: 'Slovak', code: 'sk' },
-    { name: 'Slovenian', code: 'sl' },
-    { name: 'Swedish', code: 'sv' },
-    { name: 'Turkish', code: 'tr' },
-    { name: 'Ukrainian', code: 'uk' },
-    { name: 'Vietnamese', code: 'vi' },
-];
+import { HOST, JOINT_4_LANGUAGES, JOINT_28_LANGUAGES } from '../../constants';
+import { ITALIAN_EXAMPLE, ENGLISH_EXAMPLE } from '../../examples';
 
 type LanguageMap = {
     [key: string]: Language[];
@@ -76,10 +40,16 @@ const SEARCH_TAB_HEADER =
     'Search Similar Documents in Wikipedia across Languages with Cr5';
 
 export const DemoContainer: React.FC = () => {
+    /////////////////////////////////////
     // Used to control which tab is active
+    /////////////////////////////////////
     const [compare, setCompare] = useState(true);
     const [search, setSearch] = useState(false);
     const [activeKey, setActiveKey] = useState(COMPARE_HREF);
+
+    /////////////////////////////////////
+    // Compare
+    /////////////////////////////////////
 
     // Used to track the state of the "compare" query
     const [compareModel, setCompareModel] = useState('joint_4');
@@ -135,6 +105,22 @@ export const DemoContainer: React.FC = () => {
         setDocumentSecond('');
     };
 
+    const exemplifyCompareDocuments = () => {
+        setCompareLoading(false);
+        setCompareError(undefined);
+        setHasCompareResponse(false);
+        setCompareResponse(undefined);
+        setCompareModel('joint_4');
+        setLanguageFirst(ITALIAN_EXAMPLE.lang);
+        setLanguageSecond(ENGLISH_EXAMPLE.lang);
+        setDocumentFirst(ITALIAN_EXAMPLE.text);
+        setDocumentSecond(ENGLISH_EXAMPLE.text);
+    };
+
+    /////////////////////////////////////
+    // Search
+    /////////////////////////////////////
+
     // Used to track the state of the "search" query
     const [searchModel, setSearchModel] = useState('joint_4');
     const [documentLanguage, setDocumentLanguage] = useState('en');
@@ -184,6 +170,17 @@ export const DemoContainer: React.FC = () => {
         setSearchModel('joint_4');
         setDocumentLanguage('en');
         setDocumentText('');
+        setTargetLanguage('en');
+    };
+
+    const exemplifySearchDocuments = () => {
+        setSearchLoading(false);
+        setSearchError(undefined);
+        setHasSearchResponse(false);
+        setSearchResponse(undefined);
+        setSearchModel('joint_4');
+        setDocumentLanguage(ITALIAN_EXAMPLE.lang);
+        setDocumentText(ITALIAN_EXAMPLE.text);
         setTargetLanguage('en');
     };
 
@@ -252,6 +249,7 @@ export const DemoContainer: React.FC = () => {
                                 <TabHeader
                                     headerName={COMPARE_TAB_HEADER}
                                     resetHandler={resetCompareDocuments}
+                                    exemplifyHandler={exemplifyCompareDocuments}
                                 />
                                 <Card.Body>
                                     <CompareDocumentModelSelector
@@ -333,6 +331,7 @@ export const DemoContainer: React.FC = () => {
                                 <TabHeader
                                     headerName={SEARCH_TAB_HEADER}
                                     resetHandler={resetSearchDocuments}
+                                    exemplifyHandler={exemplifySearchDocuments}
                                 />
 
                                 <Card.Body>

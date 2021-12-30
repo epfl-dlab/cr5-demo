@@ -11,6 +11,44 @@ export interface Project {
 
 export const HOST = process.env.REACT_APP_HOST_URL || 'http://localhost:5005';
 
+export const JOINT_4_LANGUAGES = [
+    { name: 'English', code: 'en' },
+    { name: 'Danish', code: 'da' },
+    { name: 'Italian', code: 'it' },
+    { name: 'Vietnamese', code: 'vi' },
+];
+
+export const JOINT_28_LANGUAGES = [
+    { name: 'English', code: 'en' },
+    { name: 'Bulgarian', code: 'bg' },
+    { name: 'Catalan', code: 'ca' },
+    { name: 'Czech', code: 'cs' },
+    { name: 'Danish', code: 'da' },
+    { name: 'German', code: 'de' },
+    { name: 'Greek', code: 'el' },
+    { name: 'Spanish', code: 'es' },
+    { name: 'Estonian', code: 'et' },
+    { name: 'Finnish', code: 'fi' },
+    { name: 'French', code: 'fr' },
+    { name: 'Croatian', code: 'hr' },
+    { name: 'Hungarian', code: 'hu' },
+    { name: 'Indonesian', code: 'id' },
+    { name: 'Italian', code: 'it' },
+    { name: 'Macedonian', code: 'mk' },
+    { name: 'Dutch', code: 'nl' },
+    { name: 'Norwegian', code: 'no' },
+    { name: 'Polish', code: 'pl' },
+    { name: 'Portuguese', code: 'pt' },
+    { name: 'Romanian', code: 'ro' },
+    { name: 'Russian', code: 'ru' },
+    { name: 'Slovak', code: 'sk' },
+    { name: 'Slovenian', code: 'sl' },
+    { name: 'Swedish', code: 'sv' },
+    { name: 'Turkish', code: 'tr' },
+    { name: 'Ukrainian', code: 'uk' },
+    { name: 'Vietnamese', code: 'vi' },
+];
+
 export const project: Project = {
     name: 'Crosslingual Document Embedding as Reduced-Rank Ridge Regression',
     authors:
