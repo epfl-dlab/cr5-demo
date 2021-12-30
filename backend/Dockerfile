@@ -18,13 +18,13 @@ RUN cd ~ && wget https://github.com/google/leveldb/archive/${LEVEL_DB_VER}.tar.g
     cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build . && rm -rf ~/leveldb.tar.gz
 
 # Create conda environment and install required packages for cr5-lib
-RUN . ~/.bashrc && conda create -n cr5 python=3.6 -y && conda activate cr5 && \
+RUN . ~/.bashrc && conda create -n cr5-demo python=3.6 -y && conda activate cr5-demo && \
     pip install nltk numpy plyvel && \
     python -c "import nltk; nltk.download('punkt')" && \
     conda install -c pytorch faiss-cpu -y && \
     pip install "git+https://github.com/epfl-dlab/cr5-lib"
 
-RUN echo "conda activate cr5" >> ~/.bashrc
+RUN echo "conda activate cr5-demo" >> ~/.bashrc
 
 # Install required packages for cr5-demo backend
 RUN . ~/.bashrc && pip install Flask Flask-Cors Flask-Inputs Flask-Limiter flasgger
@@ -35,4 +35,4 @@ ENV APP_HOST=0.0.0.0
 RUN git clone https://github.com/epfl-dlab/cr5-demo
 
 WORKDIR /cr5-demo/backend
-CMD [ "/bin/bash"]
+CMD ["/bin/bash"]
